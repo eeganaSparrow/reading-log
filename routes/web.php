@@ -3,9 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', App\Http\Controllers\ReadingLog\IndexController::class)
+->name('readinglog.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
