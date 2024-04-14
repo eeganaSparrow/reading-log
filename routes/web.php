@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Http\Controllers\ReadingLog\IndexController::class)
 ->name('readinglog.index');
+Route::get('/category/{categoryId}', App\Http\Controllers\ReadingLog\Category\IndexController::class)
+->name('readinglog.category.index')->where('categoryId', '[0-9]+');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

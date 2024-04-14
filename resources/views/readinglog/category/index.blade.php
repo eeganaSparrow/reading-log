@@ -16,15 +16,12 @@
         @endforeach
     </p>
     
-    @foreach ($categories as $category)
     <p>
-        {{$category->category_name}}
+    {{ $oneCategory->category_name }}
     </p>
-        @foreach($books as $book)
-            @if ($book->category_id === $category->id)
-                <p>{{$book->tytle}}：{{$book->author}}</p>
-            @endif
-        @endforeach
+    @foreach($books as $book)
+        <p>{{$book->tytle}}：{{$book->author}}</p>
     @endforeach
+    
 </body>
 </html>

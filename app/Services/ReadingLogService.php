@@ -12,4 +12,12 @@ class ReadingLogService{
     public function getAllaCategories(){
         return Category::all();
     }
+    public function getBooksByCategoryId(int $categoryId){
+        return Book::where('category_id', $categoryId)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+    }
+    public function getOneCategory(int $categoryId){
+        return Category::where('id', $categoryId)->first();
+    }
 }
