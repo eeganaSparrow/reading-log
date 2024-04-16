@@ -13,7 +13,10 @@ Route::get('/category/{categoryId}', App\Http\Controllers\ReadingLog\Category\In
 ->name('readinglog.category.index')->where('categoryId', '[0-9]+');
 Route::get('/book/{bookId}', App\Http\Controllers\ReadingLog\Book\IndexController::class)
 ->name('readinglog.book.index')->where('bookId', '[0-9]+');
-
+Route::get('/book/create', App\Http\Controllers\ReadingLog\Create\IndexController::class)
+->name('readinglog.book.create.index');
+Route::post('/book/create', App\Http\Controllers\ReadingLog\Create\PostController::class)
+->name('readinglog.book.create.post');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
