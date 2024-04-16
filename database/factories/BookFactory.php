@@ -17,11 +17,11 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-            'category_id' => $this->faker->randomElement([1,2,3]),
+            'category_id' => $this->faker->randomElement([1,2,3,4]),
             'tytle' => $this->faker->realText(15),
             'author' => $this->faker->name,
             'publisher' => $this->faker->company,
-            'publication_date' => '1985/04/13',
+            'publication_year' => $this->faker->numberBetween(1000,3000),
             'created_at' => now(),
             'updated_at' => now(),
         ];

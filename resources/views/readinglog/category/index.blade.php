@@ -12,12 +12,24 @@
     <p>
         カテゴリー<br>
         @foreach ($categories as $category)
+        @if ($category->category_name !== '未カテゴリー')
         <a href="{{ route('readinglog.category.index', ['categoryId' => $category->id]) }}">
         {{$category->category_name}} <br>
         </a>
+        @endif
+        @endforeach
+        @foreach ($categories as $category)
+        @if ($category->category_name === '未カテゴリー')
+        <a href="{{ route('readinglog.category.index', ['categoryId' => $category->id]) }}">
+        {{$category->category_name}} <br>
+        </a>
+        @endif
         @endforeach
     </p>
-    
+    <p>
+        <a href="{{ route('readinglog.book.create.index') }}">
+            <button>＋本の追加</button></a>
+    </p>
     <p>
     {{ $oneCategory->category_name }}
     </p>
