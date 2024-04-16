@@ -13,12 +13,12 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request, ReadingLogService $readingLogServie)
     {
+        $categories = $readingLogServie->getAllaCategories();
+
         $categoryId = (int) $request->route('categoryId');
         $books = $readingLogServie->getBooksByCategoryId($categoryId);
         $oneCategory = $readingLogServie->getOneCategory($categoryId);
         
-        $categories = $readingLogServie->getAllaCategories();
-
         return view('readinglog.category.index')
             ->with('books', $books)
             ->with('categories', $categories)

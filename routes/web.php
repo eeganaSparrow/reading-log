@@ -11,6 +11,8 @@ Route::get('/', App\Http\Controllers\ReadingLog\IndexController::class)
 ->name('readinglog.index');
 Route::get('/category/{categoryId}', App\Http\Controllers\ReadingLog\Category\IndexController::class)
 ->name('readinglog.category.index')->where('categoryId', '[0-9]+');
+Route::get('/book/{bookId}', App\Http\Controllers\ReadingLog\Book\IndexController::class)
+->name('readinglog.book.index')->where('bookId', '[0-9]+');
 
 
 Route::get('/dashboard', function () {
