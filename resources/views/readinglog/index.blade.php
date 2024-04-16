@@ -8,7 +8,7 @@
 <body>
     <h1>読書メモ</h1>
     <p>
-        カテゴリー：<br>
+        カテゴリー<br>
         @foreach ($categories as $category)
         <a href="{{ route('readinglog.category.index', ['categoryId' => $category->id]) }}">
         {{$category->category_name}} <br>
@@ -22,7 +22,9 @@
     </p>
         @foreach($books as $book)
             @if ($book->category_id === $category->id)
-                <p>{{$book->tytle}}：{{$book->author}}</p>
+                <a href="{{ route('readinglog.book.index', ['bookId' => $book->id]) }}">
+                {{$book->tytle}}：{{$book->author}} <br>
+                </a>
             @endif
         @endforeach
     @endforeach

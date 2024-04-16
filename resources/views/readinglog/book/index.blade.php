@@ -17,15 +17,14 @@
         </a>
         @endforeach
     </p>
-    
     <p>
-    {{ $oneCategory->category_name }}
+        {{ $book->tytle }}：{{ $book->author }}
     </p>
-    @foreach($books as $book)
-        <a href="{{ route('readinglog.book.index', ['bookId' => $book->id]) }}">
-        {{$book->tytle}}：{{$book->author}} <br>
-        </a>
+    <p>
+    @foreach ($memos as $memo)
+        {{ $memo->page_number }}：{{ $memo->content }} <br>
     @endforeach
+    </p>
     
 </body>
 </html>
