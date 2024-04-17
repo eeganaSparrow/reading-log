@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ReadingLog\Create;
+namespace App\Http\Controllers\ReadingLog\Book\Create;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReadingLog\Book\CreateRequest;
@@ -19,7 +19,6 @@ class PostController extends Controller
         $book->author = $request->author();
         $book->publisher = $request->publisher();
         $book->publication_year = $request->publication_year();
-        
         $book->save();
 
         return redirect()->route('readinglog.index');

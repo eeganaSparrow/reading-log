@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ReadingLog\Create;
+namespace App\Http\Controllers\ReadingLog\Book\Create;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

@@ -30,6 +30,10 @@
         {{ $book->tytle }}：{{ $book->author }}
     </p>
     <p>
+        <a href="{{ route('readinglog.book.update.index', ['bookId' => $book->id]) }}">
+            <button>本情報の編集</button></a>
+    </p>
+    <p>
     @foreach ($memos as $memo)
         {{ $memo->page_number }}：{{ $memo->content }} <br>
     @endforeach
