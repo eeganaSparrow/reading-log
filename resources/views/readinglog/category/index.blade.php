@@ -31,6 +31,10 @@
             <button>＋本の追加</button></a>
     </p>
     <p>
+        <a href="{{ route('readinglog.book.delete.index', ['display' => 'category', 'categoryId' => $oneCategory->id]) }}">
+            <button>ー本の削除</button></a>
+    </p>
+    <p>
     {{ $oneCategory->category_name }}
     </p>
     @foreach($books as $book)

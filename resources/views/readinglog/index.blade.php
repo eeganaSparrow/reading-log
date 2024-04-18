@@ -29,6 +29,11 @@
         <a href="{{ route('readinglog.book.create.index') }}">
             <button>＋本の追加</button></a>
     </p>
+    <p>
+        <a href="{{ route('readinglog.book.delete.index', ['display' => 'home']) }}">
+            <button>ー本の削除</button></a>
+    </p>
+    
     
     @foreach ($categories as $category)
     @if ($category->category_name !== '未カテゴリー')

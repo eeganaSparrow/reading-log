@@ -22,6 +22,13 @@ Route::get('/book/update/{bookId}', App\Http\Controllers\ReadingLog\Book\Update\
 ->name('readinglog.book.update.index')->where('bookId', '[0-9]+');
 Route::put('/book/update/{bookId}', App\Http\Controllers\ReadingLog\Book\Update\PutController::class)
 ->name('readinglog.book.update.put')->where('bookId', '[0-9]+');
+Route::get('/book/delete', App\Http\Controllers\ReadingLog\Book\Delete\IndexController::class)
+->name('readinglog.book.delete.index');
+Route::delete('/book/delete', App\Http\Controllers\ReadingLog\Book\Delete\DeleteSelectController::class)
+->name('readinglog.book.delete.deleteselect');
+Route::delete('/book/delete/{bookId}', App\Http\Controllers\ReadingLog\Book\Delete\DeleteController::class)
+->name('readinglog.book.delete.delete');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

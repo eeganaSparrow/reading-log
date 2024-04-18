@@ -23,6 +23,5 @@ class IndexController extends Controller
             ->with('books', $books)
             ->with('categories', $categories)
             ->with('oneCategory', $oneCategory);
-
     }
 }
