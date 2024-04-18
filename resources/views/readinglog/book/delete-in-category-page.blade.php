@@ -26,25 +26,18 @@
         @endif
         @endforeach
     </p>
-    <p>
-        {{ $book->tytle }}：{{ $book->author }}
-    </p>
-    <p>
-        <a href="{{ route('readinglog.book.update.index', ['bookId' => $book->id]) }}">
-            <button>本情報の編集</button></a>
-    </p>
-    <p>
-        <form action="{{ route('readinglog.book.delete.delete', ['bookId' => $book->id]) }}" method="post">
-            @csrf
-            @method('DELETE')
-            <button>本情報の削除</button>
-        </form>
-    </p>
-    <p>
-    @foreach ($memos as $memo)
-        {{ $memo->page_number }}：{{ $memo->content }} <br>
-    @endforeach
-    </p>
-    
+
+    <form action="{{ route('readinglog.book.delete.deleteselect', ['display' => 'category', 'categoryId' => $oneCategory->id]) }}" method="post">
+        @csrf
+        @method('DELETE')
+        <p>
+        {{ $oneCategory->category_name }}
+        </p>
+        @foreach($books as $book)
+            <input type="checkbox" name="booksId[]" value="{{ $book->id }}" id="{{ $book->id }}">
+            <label for="{{ $book->id }}">{{$book->tytle}}：{{$book->author}}</label> <br>
+        @endforeach
+        <button type="submit">削除</button>
+    </form>
 </body>
 </html>

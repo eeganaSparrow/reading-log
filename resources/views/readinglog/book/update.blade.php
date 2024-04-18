@@ -43,7 +43,7 @@
                 @endif
                 @endforeach
             </select><br>
-        <button type="submit">追加</button>
+        <button type="submit">編集</button>
     </form>    
 </body>
 </html>
