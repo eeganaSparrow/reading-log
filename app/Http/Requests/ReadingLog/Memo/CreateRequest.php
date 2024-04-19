@@ -22,7 +22,7 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'page_number' => 'nullable|integer|max:3000',
+            'page_number' => 'nullable|numeric|min:0|max:3000',
             'content' => 'required|string|max:3000',
         ];
     }
