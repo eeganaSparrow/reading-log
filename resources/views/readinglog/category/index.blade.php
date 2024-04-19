@@ -35,6 +35,14 @@
             <button>ー本の削除</button></a>
     </p>
     <p>
+        <form action="{{ route('readinglog.category.search', ['categoryId' => $oneCategory->id]) }}">
+            @csrf
+            <label for="search_str"></label>
+            <textarea name="search_str" id="search_str" type="text" placeholder="タイトルや作家名を検索"></textarea>
+            <button>検索</button>
+        </form>
+    </p>
+    <p>
     {{ $oneCategory->category_name }}
     </p>
     @foreach($books as $book)

@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    {{$categoryId}}
+    
+    {{$word}}
+    <br>
+    @foreach ($books as $book)
+    {{$book->tytle}}:{{$book->author}}
+    @endforeach
 </body>
 </html>

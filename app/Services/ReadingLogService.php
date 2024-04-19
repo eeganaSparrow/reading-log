@@ -28,4 +28,21 @@ class ReadingLogService{
             ->orderBy('updated_at', 'desc')
             ->get();
     }
+    public static function mbTrim($pString){
+        return preg_replace('/\A[\p{Cc}\p{Cf}\p{Z}]++|[\p{Cc}\p{Cf}\p{Z}]++\z/u', '', $pString);
+    }
+    public function getSearchBooks($search_str){
+        $string = $this->mbTrim($search_str);
+        return Book::where('tytle','like', "%{$string}%" )
+            ->orWhere('author', 'like', "%{$string}%" )
+            ->get();
+    }
+    public function getSearchBooksInCategory($search_str, $categoryId){
+        $string = $this->mbTrim($search_str);
+        return Book::where('category_id', $categoryId)
+            ->where('tytle','like', "%{$string}%" )
+            ->orwhere('category_id', $categoryId)
+            ->where('author', 'like', "%{$string}%" )
+            ->get();
+    }
 }
