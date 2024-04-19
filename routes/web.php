@@ -28,6 +28,10 @@ Route::delete('/book/delete', App\Http\Controllers\ReadingLog\Book\Delete\Delete
 ->name('readinglog.book.delete.deleteselect');
 Route::delete('/book/delete/{bookId}', App\Http\Controllers\ReadingLog\Book\Delete\DeleteController::class)
 ->name('readinglog.book.delete.delete');
+Route::get('/search', App\Http\Controllers\ReadingLog\Book\SearchController::class)
+->name('readinglog.book.search');
+Route::get('/category/{categoryId}/search', App\Http\Controllers\ReadingLog\Category\SearchInCategoryController::class)
+->name('readinglog.category.search');
 
 
 Route::get('/dashboard', function () {
