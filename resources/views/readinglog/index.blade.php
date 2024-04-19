@@ -26,6 +26,18 @@
         @endif
         @endforeach
         
+        <details>
+            <summary>＋カテゴリーの追加</summary>
+            <div>
+                <form action="{{ route('readinglog.category.create')}}" method="post">
+                    @csrf
+                    <textarea name="category_name" type="text" placeholder="カテゴリー名"></textarea>
+                    <button>追加</button>
+                </form>
+            </div>
+        </details>
+        
+        
     </p>
     <p>
         <a href="{{ route('readinglog.book.create.index') }}">
