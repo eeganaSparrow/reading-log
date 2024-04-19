@@ -16,7 +16,13 @@
         <a href="{{ route('readinglog.category.index', ['categoryId' => $category->id]) }}">
         {{$category->category_name}}
         </a>
-        <a href="{{ route('readinglog.category.update.index', ['categoryId' => $oneCategory->id, 'updateCategoryId' => $category->id, 'display' => 'category']) }}">　　編集</a><br>
+        <a href="{{ route('readinglog.category.update.index', ['categoryId' => $oneCategory->id, 'updateCategoryId' => $category->id, 'display' => 'category']) }}">　　編集</a>
+        <form style="display: inline-block;" action="{{ route('readinglog.category.delete', ['categoryId' => $category->id, 'displayCategoryId' => $oneCategory->id])}}" method="post">
+            @csrf
+            @method('DELETE')
+            <button>削除</button>
+        </form>
+        <br>
         @endif
         @endforeach
         @foreach ($categories as $category)

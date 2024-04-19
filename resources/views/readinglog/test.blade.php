@@ -7,10 +7,6 @@
 </head>
 <body>
     
-    {{$word}}
-    <br>
-    @foreach ($books as $book)
-    {{$book->tytle}}:{{$book->author}}
-    @endforeach
+    {{$categoryId}}
 </body>
 </html>
