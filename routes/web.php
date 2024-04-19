@@ -33,6 +33,9 @@ Route::get('/search', App\Http\Controllers\ReadingLog\Book\SearchController::cla
 Route::get('/category/{categoryId}/search', App\Http\Controllers\ReadingLog\Category\SearchInCategoryController::class)
 ->name('readinglog.category.search');
 
+Route::post('/category/create', App\Http\Controllers\ReadingLog\Category\CreateController::class)
+->name('readinglog.category.create');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
