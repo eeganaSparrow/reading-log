@@ -42,6 +42,9 @@ Route::put('/category/update/{categoryId}', App\Http\Controllers\ReadingLog\Cate
 Route::delete('/category/delete/{categoryId}', App\Http\Controllers\ReadingLog\Category\DeleteController::class)
 ->name('readinglog.category.delete')->where('categoryId', '[0-9]+');
 
+Route::post('/book/memo/create', App\Http\Controllers\ReadingLog\Memo\CreateController::class)
+->name('readinglog.memo.create');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -63,6 +63,12 @@
         {{ $memo->page_number }}：{{ $memo->content }} <br>
     @endforeach
     </p>
+    <form action="{{ route('readinglog.memo.create', ['bookId' => $book->id]) }}" method="post">
+        @csrf
+        p.<input name="page_number" type="number">
+        <textarea name="content" type="text" placeholder="メモの追加" ></textarea>
+        <button>追加</button>
+    </form>
     
 </body>
 </html>
