@@ -35,6 +35,10 @@ Route::get('/category/{categoryId}/search', App\Http\Controllers\ReadingLog\Cate
 
 Route::post('/category/create', App\Http\Controllers\ReadingLog\Category\CreateController::class)
 ->name('readinglog.category.create');
+Route::get('/category/update/{categoryId}', App\Http\Controllers\ReadingLog\Category\Update\IndexController::class)
+->name('readinglog.category.update.index')->where('categoryId', '[0-9]+');
+Route::put('/category/update/{categoryId}', App\Http\Controllers\ReadingLog\Category\Update\PutController::class)
+->name('readinglog.category.update.put')->where('categoryId', '[0-9]+');
 
 
 Route::get('/dashboard', function () {
