@@ -39,6 +39,8 @@ Route::get('/category/update/{categoryId}', App\Http\Controllers\ReadingLog\Cate
 ->name('readinglog.category.update.index')->where('categoryId', '[0-9]+');
 Route::put('/category/update/{categoryId}', App\Http\Controllers\ReadingLog\Category\Update\PutController::class)
 ->name('readinglog.category.update.put')->where('categoryId', '[0-9]+');
+Route::delete('/category/delete/{categoryId}', App\Http\Controllers\ReadingLog\Category\DeleteController::class)
+->name('readinglog.category.delete')->where('categoryId', '[0-9]+');
 
 
 Route::get('/dashboard', function () {
