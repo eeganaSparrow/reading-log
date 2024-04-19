@@ -13,10 +13,19 @@
         カテゴリー<br>
         @foreach ($categories as $category)
         @if ($category->category_name !== '未カテゴリー')
-        <a href="{{ route('readinglog.category.index', ['categoryId' => $category->id]) }}">
-        {{$category->category_name}}
-        </a>
-        <a href="{{ route('readinglog.category.update.index', ['categoryId' => $category->id, 'bookId' => $book->id, 'display' => 'memo']) }}">　　編集</a><br>
+            @if ($category->id === $updateCategoryId)
+                <form action="{{ route('readinglog.category.update.put', ['categoryId' => $category->id, 'bookId' => $book->id, 'display' => 'memo'])}}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <textarea name="category_name" type="text">{{ $category->category_name }}</textarea>
+                    <button>編集</button>
+                </form>
+            @else
+                <a href="{{ route('readinglog.category.index', ['categoryId' => $category->id]) }}">
+                {{$category->category_name}}
+                </a>
+                <a href="{{ route('readinglog.category.update.index', ['categoryId' => $category->id, 'bookId' => $book->id, 'display' => 'memo']) }}">　　編集</a><br>
+            @endif
         @endif
         @endforeach
         @foreach ($categories as $category)
