@@ -52,6 +52,8 @@ Route::get('/book/memo/update_content/{memoId}', App\Http\Controllers\ReadingLog
 ->name('readinglog.memo.update_content.index');
 Route::put('/book/memo/update_content/{memoId}', App\Http\Controllers\ReadingLog\Memo\UpdateContent\PutController::class)
 ->name('readinglog.memo.update_content.put');
+Route::delete('/book/memo/delete/{memoId}', App\Http\Controllers\ReadingLog\Memo\DeleteController::class)
+->name('readinglog.memo.delete');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

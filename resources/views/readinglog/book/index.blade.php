@@ -62,6 +62,11 @@
     @foreach ($memos as $memo)
         p.<a href="{{ route('readinglog.memo.update_page_num.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->page_number }}</a>：
         <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->content }}</a> <br>
+        <form action="{{ route('readinglog.memo.delete', ['memoId' => $memo->id, 'bookId' => $book->id]) }}" method="post">
+            @csrf
+            @method('DELETE')
+            <button type="submit">削除</button>
+        </form>
     @endforeach
     </p>
     <form action="{{ route('readinglog.memo.create', ['bookId' => $book->id]) }}" method="post">
