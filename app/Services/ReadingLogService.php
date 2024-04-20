@@ -48,4 +48,10 @@ class ReadingLogService{
     public function getMemoByMemoId(int $memoId){
         return Memo::where('id', $memoId)->firstOrFail();
     }
+    public function getSearchMemos($search_str, $bookId){
+        $string = $this->mbTrim($search_str);
+        return Memo::where('book_id', $bookId)
+            ->where('content', 'like', "%{$string}%")
+            ->get();
+    }
 }
