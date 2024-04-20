@@ -7,12 +7,12 @@
 </head>
 <body>
     <pre>
-        <?php
-            foreach ($memos as $memo){
-                print_r($memo);
-            }
-            
-        ?>
+        @foreach($memos as $memo)
+            {{$memo->content}} <br>
+        @endforeach
+        @foreach($books as $book)
+            {{$book->tytle}} <br>
+        @endforeach
     </pre>
 </body>
 </html>
