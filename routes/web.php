@@ -45,15 +45,17 @@ Route::delete('/category/delete/{categoryId}', App\Http\Controllers\ReadingLog\C
 Route::post('/book/memo/create', App\Http\Controllers\ReadingLog\Memo\CreateController::class)
 ->name('readinglog.memo.create');
 Route::get('/book/memo/update_page_num/{memoId}', App\Http\Controllers\ReadingLog\Memo\UpdatePageNum\IndexController::class)
-->name('readinglog.memo.update_page_num.index');
+->name('readinglog.memo.update_page_num.index')->where('memoId', '[0-9]+');
 Route::put('/book/memo/update_page_num/{memoId}', App\Http\Controllers\ReadingLog\Memo\UpdatePageNum\PutController::class)
-->name('readinglog.memo.update_page_num.put');
+->name('readinglog.memo.update_page_num.put')->where('memoId', '[0-9]+');
 Route::get('/book/memo/update_content/{memoId}', App\Http\Controllers\ReadingLog\Memo\UpdateContent\IndexController::class)
-->name('readinglog.memo.update_content.index');
+->name('readinglog.memo.update_content.index')->where('memoId', '[0-9]+');
 Route::put('/book/memo/update_content/{memoId}', App\Http\Controllers\ReadingLog\Memo\UpdateContent\PutController::class)
-->name('readinglog.memo.update_content.put');
+->name('readinglog.memo.update_content.put')->where('memoId', '[0-9]+');
 Route::delete('/book/memo/delete/{memoId}', App\Http\Controllers\ReadingLog\Memo\DeleteController::class)
-->name('readinglog.memo.delete');
+->name('readinglog.memo.delete')->where('memoId', '[0-9]+');
+Route::get('/book/{bookId}/search', App\Http\Controllers\ReadingLog\Memo\SearchController::class)
+->name('readinglog.memo.search');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

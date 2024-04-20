@@ -6,7 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    
-    {{$categoryId}}
+    <pre>
+        <?php
+            foreach ($memos as $memo){
+                print_r($memo);
+            }
+            
+        ?>
+    </pre>
 </body>
 </html>

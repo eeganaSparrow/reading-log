@@ -59,9 +59,17 @@
         </form>
     </p>
     <p>
+        <form action="{{ route('readinglog.memo.search', ['bookId' => $book->id]) }}">
+            @csrf
+            <label for="search_str"></label>
+            <textarea name="search_str" id="search_str" type="text" placeholder="メモを検索"></textarea>
+            <button>検索</button>
+        </form>
+    </p>
+    <p>
     @foreach ($memos as $memo)
         p.<a href="{{ route('readinglog.memo.update_page_num.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->page_number }}</a>：
-        <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->content }}</a> <br>
+        <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{!! $memo->content !!}}</a> <br>
         <form action="{{ route('readinglog.memo.delete', ['memoId' => $memo->id, 'bookId' => $book->id]) }}" method="post">
             @csrf
             @method('DELETE')
