@@ -56,6 +56,8 @@ Route::delete('/book/memo/delete/{memoId}', App\Http\Controllers\ReadingLog\Memo
 ->name('readinglog.memo.delete')->where('memoId', '[0-9]+');
 Route::get('/book/{bookId}/search', App\Http\Controllers\ReadingLog\Memo\SearchController::class)
 ->name('readinglog.memo.search');
+Route::post('/book/memo/search', App\Http\Controllers\ReadingLog\Memo\SearchAllController::class)
+->name('readinglog.memo.search_all');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

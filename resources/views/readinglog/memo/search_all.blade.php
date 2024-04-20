@@ -70,33 +70,19 @@
             <button>検索</button>
         </form>
     </p>    
-    @foreach ($categories as $category)
-    @if ($category->category_name !== '未カテゴリー')
-    <p>
-        {{$category->category_name}}
-    </p>
-        @foreach($books as $book)
-            @if ($book->category_id === $category->id)
-                <a href="{{ route('readinglog.book.index', ['bookId' => $book->id]) }}">
-                {{$book->tytle}}：{{$book->author}} <br>
-                </a>
+    @foreach ($books as $book)
+        {{$book->tytle}}：{{$book->author}} <br>
+        @foreach ($memos as $memo)
+            @if ($book->id === $memo->book_id)
+                p.<a href="{{ route('readinglog.memo.update_page_num.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->page_number }}</a>：
+                <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{!! $memo->content !!}}</a> <br>
+                <form action="{{ route('readinglog.memo.delete', ['memoId' => $memo->id, 'bookId' => $book->id]) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">削除</button>
+                </form>
             @endif
         @endforeach
-    @endif
-    @endforeach
-    @foreach ($categories as $category)
-    @if ($category->category_name === '未カテゴリー')
-    <p>
-        {{$category->category_name}}
-    </p>
-        @foreach($books as $book)
-            @if ($book->category_id === $category->id)
-                <a href="{{ route('readinglog.book.index', ['bookId' => $book->id]) }}">
-                {{$book->tytle}}：{{$book->author}} <br>
-                </a>
-            @endif
-        @endforeach
-    @endif
     @endforeach
 </body>
 </html>

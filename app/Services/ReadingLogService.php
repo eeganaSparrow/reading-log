@@ -54,4 +54,15 @@ class ReadingLogService{
             ->where('content', 'like', "%{$string}%")
             ->get();
     }
+    public function getSearchAllMemos($search_str){
+        $string = $this->mbTrim($search_str);
+        return Memo::where('content', 'like', "%{$string}%")
+            ->get();
+    }
+    public function getSearchBookId($search_str){
+        $string = $this->mbTrim($search_str);
+        return Memo::where('content', 'like', "%{$string}%")
+            ->groupBy('book_id')
+            ->pluck('book_id');
+    }
 }
