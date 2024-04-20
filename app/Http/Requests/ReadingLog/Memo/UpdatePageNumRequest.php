@@ -4,7 +4,7 @@ namespace App\Http\Requests\ReadingLog\Memo;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+class UpdatePageNumRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,9 @@ class CreateRequest extends FormRequest
     {
         return [
             'page_number' => 'nullable|numeric|min:0|max:3000',
-            'content' => 'required',
         ];
     }
     public function page_number(){
         return $this->input('page_number');
-    }
-    public function content(){
-        return $this->input('content');
     }
 }
