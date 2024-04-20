@@ -60,8 +60,17 @@
     </p>
     <p>
     @foreach ($memos as $memo)
-        p.<a href="{{ route('readinglog.memo.update_page_num.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->page_number }}</a>：
-        <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->content }}</a> <br>
+        @if ($memo->id === $memoId)
+            <form action="{{ route('readinglog.memo.update_page_num.put', ['memoId' => $memo->id, 'bookId' => $book->id])}}" method="post" style="display: inline-block">
+                @csrf
+                @method('PUT')
+                p.<input name="page_number" type="number" min="0" max="3000" value="{{ $memo->page_number }}">
+            </form>：
+            <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->content }}</a> <br>
+        @else
+            p.<a href="{{ route('readinglog.memo.update_page_num.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->page_number }}</a>：
+            <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->content }}</a> <br>
+        @endif
     @endforeach
     </p>
     <form action="{{ route('readinglog.memo.create', ['bookId' => $book->id]) }}" method="post">

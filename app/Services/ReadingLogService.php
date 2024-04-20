@@ -45,4 +45,7 @@ class ReadingLogService{
             ->where('author', 'like', "%{$string}%" )
             ->get();
     }
+    public function getMemoByMemoId(int $memoId){
+        return Memo::where('id', $memoId)->firstOrFail();
+    }
 }

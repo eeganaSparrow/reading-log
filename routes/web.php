@@ -44,7 +44,14 @@ Route::delete('/category/delete/{categoryId}', App\Http\Controllers\ReadingLog\C
 
 Route::post('/book/memo/create', App\Http\Controllers\ReadingLog\Memo\CreateController::class)
 ->name('readinglog.memo.create');
-
+Route::get('/book/memo/update_page_num/{memoId}', App\Http\Controllers\ReadingLog\Memo\UpdatePageNum\IndexController::class)
+->name('readinglog.memo.update_page_num.index');
+Route::put('/book/memo/update_page_num/{memoId}', App\Http\Controllers\ReadingLog\Memo\UpdatePageNum\PutController::class)
+->name('readinglog.memo.update_page_num.put');
+Route::get('/book/memo/update_content/{memoId}', App\Http\Controllers\ReadingLog\Memo\UpdateContent\IndexController::class)
+->name('readinglog.memo.update_content.index');
+Route::put('/book/memo/update_content/{memoId}', App\Http\Controllers\ReadingLog\Memo\UpdateContent\PutController::class)
+->name('readinglog.memo.update_content.put');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
