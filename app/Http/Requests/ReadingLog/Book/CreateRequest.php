@@ -22,16 +22,17 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tytle' => 'required|max:100',
+            'title' => 'required|max:100',
             'author' => 'nullable|max:30',
+            'picture_name' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'publisher' => 'nullable|max:30',
             'publication_year' => 'nullable|integer|max:3000',
             'category_id' => 'nullable|integer',
         ];
     }
 
-    public function tytle(): string{
-        return $this->input('tytle');
+    public function title(): string{
+        return $this->input('title');
     }
     public function author(){
         return $this->input('author');

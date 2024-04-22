@@ -11,7 +11,7 @@
             {{$memo->content}} <br>
         @endforeach
         @foreach($books as $book)
-            {{$book->tytle}} <br>
+            {{$book->title}} <br>
         @endforeach
     </pre>
 </body>

@@ -45,7 +45,8 @@
         </details>
     </p>
     <p>
-        {{ $book->tytle }}：{{ $book->author }}
+        <img src="{{ asset('storage/images/'. $book->picture_name) }}" alt="{{ $book->picture_name }}">
+        {{ $book->title }}：{{ $book->author }}
     </p>
     <p>
         <a href="{{ route('readinglog.book.update.index', ['bookId' => $book->id]) }}">
@@ -69,7 +70,7 @@
     <p>
     @foreach ($memos as $memo)
         p.<a href="{{ route('readinglog.memo.update_page_num.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->page_number }}</a>：
-        <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{!! $memo->content !!}}</a> <br>
+        <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{!! nl2br(e($memo->content)) !!}</a> <br>
         <form action="{{ route('readinglog.memo.delete', ['memoId' => $memo->id, 'bookId' => $book->id]) }}" method="post">
             @csrf
             @method('DELETE')
@@ -80,7 +81,13 @@
     <form action="{{ route('readinglog.memo.create', ['bookId' => $book->id]) }}" method="post">
         @csrf
         p.<input name="page_number" type="number" min="0" max="3000" value="0">
+        @error('page_number')
+        <p style="color: red;">{{ $message }}</p>
+        @enderror
         <textarea name="content" type="text" placeholder="メモの追加" ></textarea>
+        @error('content')
+        <p style="color: red;">{{ $message }}</p>
+        @enderror
         <button>追加</button>
     </form>
     

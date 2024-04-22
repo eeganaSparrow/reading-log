@@ -39,6 +39,9 @@
                 <form action="{{ route('readinglog.category.create')}}" method="post">
                     @csrf
                     <textarea name="category_name" type="text" placeholder="カテゴリー名"></textarea>
+                    @error('category_name')
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
                     <button>追加</button>
                 </form>
             </div>
@@ -71,11 +74,12 @@
         </form>
     </p>    
     @foreach ($books as $book)
-        {{$book->tytle}}：{{$book->author}} <br>
+        <img src="{{ asset('storage/images/'. $book->picture_name) }}" alt="{{ $book->picture_name }}">
+        {{$book->title}}：{{$book->author}} <br>
         @foreach ($memos as $memo)
             @if ($book->id === $memo->book_id)
                 p.<a href="{{ route('readinglog.memo.update_page_num.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->page_number }}</a>：
-                <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{!! $memo->content !!}}</a> <br>
+                <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{!! nl2br(e($memo->content)) !!}</a> <br>
                 <form action="{{ route('readinglog.memo.delete', ['memoId' => $memo->id, 'bookId' => $book->id]) }}" method="post">
                     @csrf
                     @method('DELETE')

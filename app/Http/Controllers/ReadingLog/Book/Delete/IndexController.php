@@ -20,7 +20,8 @@ class IndexController extends Controller
             $books = $readingLogServie->getAllBooks();
             return view('readinglog.book.delete')
                 ->with('books', $books)
-                ->with('categories', $categories);
+                ->with('categories', $categories)
+                ->with('display', $display);
         } elseif ($display === 'category'){
             $categoryId = (int) $request->input('categoryId');
             $books = $readingLogServie->getBooksByCategoryId($categoryId);
@@ -29,7 +30,8 @@ class IndexController extends Controller
             return view('readinglog.book.delete-in-category-page')
                 ->with('books', $books)
                 ->with('categories', $categories)
-                ->with('oneCategory', $oneCategory);
+                ->with('oneCategory', $oneCategory)
+                ->with('display', $display);
         }
         
     }

@@ -39,13 +39,16 @@
                 <form action="{{ route('readinglog.category.create')}}" method="post">
                     @csrf
                     <textarea name="category_name" type="text" placeholder="カテゴリー名"></textarea>
+                    @error('category_name')
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
                     <button>追加</button>
                 </form>
             </div>
         </details>
     </p>
     <p>
-        {{ $book->tytle }}：{{ $book->author }}
+        {{ $book->title }}：{{ $book->author }}
     </p>
     <p>
         <a href="{{ route('readinglog.book.update.index', ['bookId' => $book->id]) }}">
@@ -65,18 +68,27 @@
                 @csrf
                 @method('PUT')
                 p.<input name="page_number" type="number" min="0" max="3000" value="{{ $memo->page_number }}">
+                @error('page_number')
+                <p style="color: red;">{{ $message }}</p>
+                @enderror
             </form>：
-            <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->content }}</a> <br>
+            <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ nl2br(e($memo->content)) }}</a> <br>
         @else
             p.<a href="{{ route('readinglog.memo.update_page_num.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->page_number }}</a>：
-            <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ $memo->content }}</a> <br>
+            <a href="{{ route('readinglog.memo.update_content.index', ['memoId' => $memo->id, 'bookId' => $book->id])}}">{{ nl2br(e($memo->content)) }}</a> <br>
         @endif
     @endforeach
     </p>
     <form action="{{ route('readinglog.memo.create', ['bookId' => $book->id]) }}" method="post">
         @csrf
         p.<input name="page_number" type="number" min="0" max="3000" value="0">
+        @error('page_number')
+        <p style="color: red;">{{ $message }}</p>
+        @enderror
         <textarea name="content" type="text" placeholder="メモの追加" ></textarea>
+        @error('content')
+        <p style="color: red;">{{ $message }}</p>
+        @enderror
         <button>追加</button>
     </form>
     
