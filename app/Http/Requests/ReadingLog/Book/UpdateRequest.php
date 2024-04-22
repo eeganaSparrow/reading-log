@@ -22,7 +22,7 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tytle' => 'required|max:100',
+            'title' => 'required|max:100',
             'author' => 'nullable|max:30',
             'publisher' => 'nullable|max:30',
             'publication_year' => 'nullable|integer|max:3000',
@@ -30,8 +30,8 @@ class UpdateRequest extends FormRequest
         ];
     }
 
-    public function tytle(): string{
-        return $this->input('tytle');
+    public function title(): string{
+        return $this->input('title');
     }
     public function author(){
         return $this->input('author');

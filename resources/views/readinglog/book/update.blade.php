@@ -10,12 +10,18 @@
     <h1>読書メモ</h1>
     </a>
     <button onClick="history.back();">戻る</button>
-    <form action="{{ route('readinglog.book.update.put', ['bookId' => $book->id]) }}" method="post">
+    <form action="{{ route('readinglog.book.update.put', ['bookId' => $book->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <label for="todo-content"><h2>本情報の追加</h2></label><br>
-        タイトル：<textarea name="tytle" id="book-info" type="text" placeholder="タイトルを入力">{{ $book->tytle }}</textarea><br>
-        @error('tytle')
+        <label for="todo-content"><h2>本情報の編集</h2></label><br>
+        画像の追加：<input type="file" name="picture_name" id="book-info">
+        <img src="{{ asset('storage/images/'. $book->picture_name) }}" alt="{{ $book->picture_name }}">
+        <br>
+        @error('picture_name')
+        <p style="color: red;">{{ $message }}</p>
+        @enderror
+        タイトル：<textarea name="title" id="book-info" type="text" placeholder="タイトルを入力">{{ $book->title }}</textarea><br>
+        @error('title')
         <p style="color: red;">{{ $message }}</p>
         @enderror
         作者：<textarea name="author" id="book-info" type="text" placeholder="作者名を入力">{{ $book->author }}</textarea><br>

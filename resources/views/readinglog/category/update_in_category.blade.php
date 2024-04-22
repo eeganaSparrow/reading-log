@@ -18,6 +18,9 @@
                     @csrf
                     @method('PUT')
                     <textarea name="category_name" type="text">{{ $category->category_name }}</textarea>
+                    @error('category_name')
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
                     <button>編集</button>
                 </form>
             @else
@@ -42,6 +45,9 @@
                 <form action="{{ route('readinglog.category.create')}}" method="post">
                     @csrf
                     <textarea name="category_name" type="text" placeholder="カテゴリー名"></textarea>
+                    @error('category_name')
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
                     <button>追加</button>
                 </form>
             </div>
@@ -69,7 +75,7 @@
     </p>
     @foreach($books as $book)
         <a href="{{ route('readinglog.book.index', ['bookId' => $book->id]) }}">
-        {{$book->tytle}}：{{$book->author}} <br>
+        {{$book->title}}：{{$book->author}} <br>
         </a>
     @endforeach
     

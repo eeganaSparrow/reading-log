@@ -39,6 +39,9 @@
                 <form action="{{ route('readinglog.category.create')}}" method="post">
                     @csrf
                     <textarea name="category_name" type="text" placeholder="カテゴリー名"></textarea>
+                    @error('category_name')
+                    <p style="color: red;">{{ $message }}</p>
+                    @enderror
                     <button>追加</button>
                 </form>
             </div>
@@ -46,7 +49,7 @@
     </p>
     
     <p>
-        <a href="{{ route('readinglog.book.create.index') }}">
+        <a href="{{ route('readinglog.book.create.index', ['display' => 'category', 'categoryId' => $oneCategory->id]) }}">
             <button>＋本の追加</button></a>
     </p>
     <p>
@@ -66,7 +69,8 @@
     </p>
     @foreach($books as $book)
         <a href="{{ route('readinglog.book.index', ['bookId' => $book->id]) }}">
-        {{$book->tytle}}：{{$book->author}} <br>
+        <img src="{{ asset('storage/images/'. $book->picture_name) }}" alt="{{ $book->picture_name }}">
+        {{$book->title}}：{{$book->author}} <br>
         </a>
     @endforeach
     

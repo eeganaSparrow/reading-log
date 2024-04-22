@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\ReadingLog\Category\Update;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\ReadingLog\Category\UpdateRequest;
 use App\Models\Category;
 use App\Services\ReadingLogService;
@@ -18,8 +17,7 @@ class PutController extends Controller
         $display = $request->input('display');
         $categoryId = (int) $request->route('categoryId');
         $category = Category::where('id', $categoryId)->firstOrFail();
-        $category->category_name = $request->category_name();
-        $category->save();
+        $readingLogServie->saveCategory($request, $category);
 
         if ($display === 'home'){    
             return redirect()->route('readinglog.index');
