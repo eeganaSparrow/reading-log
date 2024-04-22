@@ -24,6 +24,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => 'required|max:100',
             'author' => 'nullable|max:30',
+            'picture_name' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'publisher' => 'nullable|max:30',
             'publication_year' => 'nullable|integer|max:3000',
             'category_id' => 'nullable|integer',
